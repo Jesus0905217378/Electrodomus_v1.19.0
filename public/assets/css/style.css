@@ -1,0 +1,242 @@
+body{font-family:system-ui,Arial,sans-serif;margin:0;background:#f8fafc;color:#0f172a}
+.nav{display:flex;gap:12px;padding:12px 16px;background:#0ea5e9;color:#fff;align-items:center}
+.nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:8px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+.nav .spacer{flex:1}
+.container{max-width:960px;margin:24px auto;padding:0 16px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:16px}
+.btn{background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:8px 12px;cursor:pointer}
+iframe {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+/* Modulos resaltados */
+.nav a.active {
+  background: #0369a1;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Base existente (no borres) ... */
+
+/* ---- NAV responsivo ---- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+}
+
+/* Botón hamburguesa */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  font-size:1.4rem;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:8px;
+}
+.nav-toggle:focus{ outline:2px solid #fff; outline-offset:2px; }
+
+/* Contenedor de enlaces (desktop) */
+.nav-links{ display:flex; align-items:center; gap:12px; width:100%; }
+
+/* Pastilla de usuario */
+.user-pill{ padding:6px 10px; background:rgba(255,255,255,.15); border-radius:999px; }
+
+/* Activo (ya lo tenías) */
+.nav a.active { background:#0369a1; font-weight:600; text-decoration:underline; }
+
+/* ---- Breakpoint móvil ---- */
+@media (max-width: 768px){
+  .nav { flex-wrap:wrap; }
+  .nav-toggle{ display:block; margin-right:8px; }
+
+  /* Por defecto cerrado */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    width:100%;
+    background:#0ea5e9;
+    padding:10px 0 6px;
+    border-radius:12px;
+    margin-top:8px;
+  }
+  /* Abierto cuando tiene la clase .open */
+  .nav-links.open{ display:flex; }
+
+  .nav a{ padding:10px 12px; }
+  .user-pill{ margin-left:10px; }
+}
+
+/* --- ElectroDomus: banner de actualización PWA --- */
+#pwa-update-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 16px;
+  z-index: 9999;
+  background: #0f172a;            /* fondo oscuro elegante */
+  color: #ffffff;
+  border: 1px solid #0ea5e9;      /* azul ElectroDomus */
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  font-family: system-ui, Arial, sans-serif;
+  animation: ed-slide-up .28s ease-out both;
+}
+
+#pwa-update-bar .ed-pill {
+  background: rgba(14,165,233,.15);   /* #0ea5e9 con transparencia */
+  color: #e0f2fe;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+}
+
+#pwa-update-bar .ed-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#pwa-update-bar .ed-btn-apply {
+  background: #0ea5e9;              /* primario */
+  color: #0f172a;
+}
+#pwa-update-bar .ed-btn-apply:focus { outline: 2px solid #fff; outline-offset: 2px; }
+#pwa-update-bar .ed-btn-apply:hover { filter: brightness(1.05); }
+
+#pwa-update-bar .ed-btn-dismiss {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}
+#pwa-update-bar .ed-btn-dismiss:hover { background: rgba(255,255,255,.06); }
+
+/* Animación de entrada */
+@keyframes ed-slide-up {
+  from { transform: translate(-50%, 10px); opacity: 0; }
+  to   { transform: translate(-50%, 0);    opacity: 1; }
+}
+
+/* Respeto a usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  #pwa-update-bar { animation: none; }
+}
+
+/* Modo oscuro (si en algún momento aplicas .dark al body) */
+.dark #pwa-update-bar {
+  background: #0b1220;
+  border-color: #0ea5e9;
+}
+
+/* Logo en login */
+.card img[alt="ElectroDomus"] {
+  max-width: 120px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+}
+/* Login */
+.card .label { font-weight: 600; color: #0f172a; }
+.card .input { padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 8px; }
+.card .input:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,.25); }
+
+/* Página de inicio */
+.card h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.card p {
+  line-height: 1.5;
+}
+.btn {
+  border-radius: 10px;
+  transition: all .2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+/* Formularios de login/registro */
+.card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.card .label {
+  font-weight: 600;
+  color: #0f172a;
+}
+.card .input {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+.card .input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14,165,233,.25);
+}
+
+/* Tarjetas clicables del panel */
+.container .card[href], .container a.card {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.container .card[href]:hover, .container a.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  text-decoration: none;
+}
+.container .card h3 { font-weight: 700; }
+/* Badges */
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.badge-seen { background:#dcfce7; color:#166534; border-color:#86efac; }
+.badge-pending { background:#e0f2fe; color:#075985; border-color:#7dd3fc; }
+
+/* Barra de progreso */
+.progress {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background: #0ea5e9;
+}
+
+/* Evaluaciones */
+.card .preg {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.card .answer-ok {
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+.card .answer-bad {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
